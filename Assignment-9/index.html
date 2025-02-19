@@ -1,1 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Appointment Booking</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
 
+  <header>
+    <h1>Welcome to Our Online Appointment System</h1>
+    <p>Choose a service and book your appointment!</p>
+  </header>
+
+  <section id="services">
+    <div class="service">
+      <h2>Doctor Consultation</h2>
+      <button class="book-btn" onclick="openBookingForm('Doctor Consultation')">Book Now</button>
+    </div>
+    <div class="service">
+      <h2>Salon Booking</h2>
+      <button class="book-btn" onclick="openBookingForm('Salon Booking')">Book Now</button>
+    </div>
+    <div class="service">
+      <h2>Car Service</h2>
+      <button class="book-btn" onclick="openBookingForm('Car Service')">Book Now</button>
+    </div>
+  </section>
+
+  <div id="booking-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeBookingForm()">&times;</span>
+      <h2>Book an Appointment</h2>
+      <form id="booking-form">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+        <span class="error-message" id="name-error"></span>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error-message" id="email-error"></span>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required pattern="\d{10}">
+        <span class="error-message" id="phone-error"></span>
+
+        <label for="service">Select Service:</label>
+        <select id="service" name="service" required>
+          <option value="Doctor Consultation">Doctor Consultation</option>
+          <option value="Salon Booking">Salon Booking</option>
+          <option value="Car Service">Car Service</option>
+        </select>
+
+        <label for="datetime">Preferred Date & Time:</label>
+        <input type="datetime-local" id="datetime" name="datetime" required>
+        <span class="error-message" id="datetime-error"></span>
+
+        <label for="requests">Special Requests:</label>
+        <textarea id="requests" name="requests"></textarea>
+
+        <label for="terms">
+          <input type="checkbox" id="terms" name="terms" required>
+          I agree to the terms and conditions
+        </label>
+        <span class="error-message" id="terms-error"></span>
+
+        <button type="submit" class="submit-btn">Submit Appointment</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="confirmation-popup" class="modal">
+    <div class="modal-content">
+      <p id="confirmation-message"></p>
+      <button onclick="closeConfirmationPopup()" class="close-btn">Close</button>
+    </div>
+  </div>
+
+  <section id="appointments">
+    <h2>Booked Appointments</h2>
+    <table id="appointments-list">
+      <tr>
+        <th>Name</th>
+        <th>Service</th>
+        <th>Date & Time</th>
+        <th>Status</th>
+      </tr>
+    </table>
+  </section>
+
+  <script src="index.js"></script>
+</body>
+</html>
